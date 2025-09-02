@@ -234,5 +234,20 @@ document.addEventListener('DOMContentLoaded', function() {
             renderWinnerTable(pollId);
         });
     });
-
+    
+    // Logika pro tlačítka resetování
+    document.querySelectorAll('.reset-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const pollId = this.getAttribute('data-poll-id');
+            const data = hlasovaniData[pollId];
+            data.votes = {};
+            if (data.chartInstance) {
+                data.chartInstance.destroy();
+                data.chartInstance = null;
+            }
+            renderChart(pollId);
+            renderTable(pollId);
+            renderWinnerTable(pollId);
+        });
+    });
 });
