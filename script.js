@@ -199,71 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Funkce pro vynulování hlasování
-    function resetVoting(pollId) {
-        if (confirm("Opravdu chcete vynulovat hlasování?")) {
-            hlasovaniData[pollId].votes = {};
-            renderChart(pollId);
-            renderTable(pollId);
-            renderWinnerTable(pollId);
-        }
-    }
-
-    // Logika pro fotky hráčů
-    const players = [
-        "sztefko", "kouba", "venca", "filos", "ondra", "david", 
-        "paris", "lukas-p", "lukas-r", "mirek", "chmiela", "martin", 
-        "miroslav", "patazz"
-    ];
-
-    function loadPlayerPhotos() {
-        players.forEach(player => {
-            const foto = document.getElementById(`foto-${player}`);
-            const savedPhoto = localStorage.getItem(`playerPhoto-${player}`);
-            if (foto && savedPhoto) {
-                foto.src = savedPhoto;
-            }
-        });
-    }
-
-    function handlePhotoUpload(playerId) {
-        const fileInput = document.createElement('input');
-        fileInput.type = 'file';
-        fileInput.accept = 'image/*';
-        fileInput.style.display = 'none';
-
-        fileInput.addEventListener('change', (event) => {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    const dataUrl = e.target.result;
-                    const fotoElement = document.getElementById(`foto-${playerId}`);
-                    if (fotoElement) {
-                        fotoElement.src = dataUrl;
-                        localStorage.setItem(`playerPhoto-${playerId}`, dataUrl);
-                    }
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        fileInput.click();
-    }
-
-    // Přidání posluchačů na fotky hráčů
-    players.forEach(player => {
-        const fotoElement = document.getElementById(`foto-${player}`);
-        if (fotoElement) {
-            fotoElement.addEventListener('click', () => {
-                handlePhotoUpload(player);
-            });
-        }
-    });
-
-
     // Inicializace na začátku
-    loadPlayerPhotos();
     renderChart('zapas-datum');
     renderTable('zapas-datum');
     renderWinnerTable('zapas-datum');
@@ -299,11 +235,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Logika pro tlačítko "Vynulovat"
-    document.querySelectorAll('.reset-button').forEach(button => {
-        button.addEventListener('click', function() {
-            const pollId = this.getAttribute('data-poll-id');
-            resetVoting(pollId);
-        });
-    });
 });
