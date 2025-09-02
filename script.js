@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Data pro hlasování
-    const hlasovaniData = {
+    let hlasovaniData = {
         'zapas-datum': {
             votes: {},
             chartInstance: null
@@ -91,6 +91,23 @@ document.addEventListener('DOMContentLoaded', function() {
             chartInstance: null
         }
     };
+    
+    // Načtení dat z localStorage
+    function loadVotes() {
+        const storedData = localStorage.getItem('hlasovaniData');
+        if (storedData) {
+            hlasovaniData = JSON.parse(storedData);
+            // Je třeba obnovit instance grafů, protože se neukládají
+            for (const pollId in hlasovaniData) {
+                hlasovaniData[pollId].chartInstance = null;
+            }
+        }
+    }
+
+    // Uložení dat do localStorage
+    function saveVotes() {
+        localStorage.setItem('hlasovaniData', JSON.stringify(hlasovaniData));
+    }
 
     // Funkce pro nalezení vítěze
     function findWinner(pollId) {
@@ -200,6 +217,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Inicializace na začátku
+    loadVotes();
     renderChart('zapas-datum');
     renderTable('zapas-datum');
     renderWinnerTable('zapas-datum');
@@ -228,6 +246,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 data.votes[volba] = [];
             }
             data.votes[volba].push(jmeno.trim());
+            
+            saveVotes(); // Uložíme data do localStorage po každém hlasování
 
             renderChart(pollId);
             renderTable(pollId);
@@ -245,6 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 data.chartInstance.destroy();
                 data.chartInstance = null;
             }
+            saveVotes(); // Uložíme vymazaná data do localStorage
             renderChart(pollId);
             renderTable(pollId);
             renderWinnerTable(pollId);
