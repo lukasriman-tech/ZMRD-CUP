@@ -245,17 +245,17 @@ iframe {
 
 #bg2 {
     background-image: url('rB2.png');
-    opacity: 0;
+    opacity: 1;
 }
 
 #bg3 {
     background-image: url('rB3.png');
-    opacity: 0;
+    opacity: 1;
 }
 
 #bg4 {
     background-image: url('rB4.png');
-    opacity: 0;
+    opacity: 1;
 }
 #bg5 {
     background-image: url('rB5.png');
@@ -347,4 +347,5 @@ iframe {
     pointer-events: none; /* Aby puk neblokoval klikání */
     animation: shot-animation 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     z-index: 9999;
+
 }
