@@ -51,7 +51,7 @@ body {
 }
 
 #bg5 {
-    background-image: url('nhl5.PNG');
+    background-image: url('nhl5.png');
     opacity: 0;
 }
 
@@ -380,4 +380,5 @@ main {
 .reset-button:hover {
     background-color: #cc0000;
 }
+
 
