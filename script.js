@@ -239,7 +239,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const data = hlasovaniData[pollId];
 
             for (const volbaKey in data.votes) {
-                data.votes[volbaKey] = data.votes[volbaKey].filter(hrac => hrac !== jmeno);
+                data.votes[volba] = data.votes[volba] || [];
+                data.votes[volba] = data.votes[volba].filter(hrac => hrac !== jmeno);
             }
 
             if (!data.votes[volba]) {
