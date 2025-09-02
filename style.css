@@ -239,26 +239,26 @@ iframe {
 
 /* Nastavení obrázků pro jednotlivá pozadí */
 #bg1 {
-    background-image: url('rB1.png');
+    background-image: url('nhl1.png');
     opacity: 1;
 }
 
 #bg2 {
-    background-image: url('rB2.png');
+    background-image: url('nhl2.png');
     opacity: 1;
 }
 
 #bg3 {
-    background-image: url('rB3.png');
+    background-image: url('nhl3.png');
     opacity: 1;
 }
 
 #bg4 {
-    background-image: url('rB4.png');
+    background-image: url('nhl4.png');
     opacity: 1;
 }
 #bg5 {
-    background-image: url('rB5.png');
+    background-image: url('nhl5.png');
     opacity: 1;
 }
 
@@ -349,3 +349,4 @@ iframe {
     z-index: 9999;
 
 }
+
