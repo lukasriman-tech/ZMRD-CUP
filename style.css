@@ -31,27 +31,27 @@ body {
 
 /* Nastavení obrázků pro jednotlivá pozadí */
 #bg1 {
-    background-image: url('nhl1.PNG');
+    background-image: url('rb1.png');
     opacity: 1; /* První je na začátku viditelné */
 }
 
 #bg2 {
-    background-image: url('nhl2.png');
+    background-image: url('rb2.png');
     opacity: 0; /* Ostatní jsou skryté */
 }
 
 #bg3 {
-    background-image: url('nhl3.PNG');
+    background-image: url('rb3.png');
     opacity: 0;
 }
 
 #bg4 {
-    background-image: url('nhl4.PNG');
+    background-image: url('rb4.png');
     opacity: 0;
 }
 
 #bg5 {
-    background-image: url('nhl5.png');
+    background-image: url('rb5.png');
     opacity: 0;
 }
 
@@ -380,5 +380,3 @@ main {
 .reset-button:hover {
     background-color: #cc0000;
 }
-
-
